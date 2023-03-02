@@ -1,7 +1,6 @@
 import pickle
 import consts
 import numpy as np
-from datetime import datetime
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 
@@ -35,8 +34,7 @@ def dataset(a, b, f = None,  N = 250, x_max =1, noise_power = 0, random_x = True
 
     return y, y_true, np.atleast_2d(x).T
 
-def time_now():
-   return datetime.now().strftime("%H:%M:%S")
+
 
 if __name__ == '__main__':
   print(f'{time_now()} Генерация данных')

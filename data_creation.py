@@ -1,39 +1,40 @@
 import pickle
-import consts
 import numpy as np
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 
-def true_fun(x, a=np.pi, b = 0, f=np.sin):
-    x = np.atleast_1d(x)[:]
-    a = np.atleast_1d(a)
-    
-    if f is None: f = lambda x:x # line
-    x = np.sum([ai*np.power(x, i+1) for i,ai in enumerate(a)],axis=0)
+import consts
+from utils import time_now
 
-    return f(x+ b)
+def true_fun(x, a=np.pi, b = 0, f=np.sin):
+  x = np.atleast_1d(x)[:]
+  a = np.atleast_1d(a)
+  
+  if f is None: f = lambda x:x # line
+  x = np.sum([ai*np.power(x, i+1) for i,ai in enumerate(a)],axis=0)
+
+  return f(x+ b)
 
 def noises(shape , noise_power):
-    return np.random.randn(*shape) *noise_power
+  return np.random.randn(*shape) * noise_power
 
 def dataset(a, b, f = None,  N = 250, x_max =1, noise_power = 0, random_x = True,  seed = 42):
-    np.random.seed(seed)
-    
-    if random_x:
-        x = np.sort(np.random.rand(N))*x_max    
-    else:
-        x = np.linspace(0,x_max,N)
-    
-    y_true = np.array([])
-    
-    for f_ in np.append([], f):
-        y_true=np.append(y_true, true_fun(x, a, b, f_))
-    
-    y_true = y_true.reshape(-1,N).T
-    y = y_true + noises(y_true.shape , noise_power)
+  np.random.seed(seed)
+  
+  if random_x:
+    x = np.sort(np.random.rand(N))*x_max    
+  else:
+    x = np.linspace(0,x_max,N)
+  
+  y_true = np.array([])
+  
+  for f_ in np.append([], f):
+    y_true=np.append(y_true, true_fun(x, a, b, f_))
+  
+  y_true = y_true.reshape(-1,N).T
+  y = y_true + noises(y_true.shape , noise_power)
 
-    return y, y_true, np.atleast_2d(x).T
-
+  return y, y_true, np.atleast_2d(x).T
 
 
 if __name__ == '__main__':

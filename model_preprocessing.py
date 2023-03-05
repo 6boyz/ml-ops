@@ -1,4 +1,5 @@
 import pickle
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import consts
@@ -121,7 +122,33 @@ all_data = pd.get_dummies(all_data)
 print(all_data.shape)
 
 # Getting the new train and test sets.
+
 train = all_data[:ntrain]
 test = all_data[ntrain:]
+
+x_train = train
+y_train = y_train
+
+Path(consts.X_TRAIN).mkdir(parents=True, exist_ok=True)
+with open(consts.X_TRAIN_FULL, 'wb') as f:
+    pickle.dump(x_train, f)
+
+Path(consts.Y_TRAIN).mkdir(parents=True, exist_ok=True)
+with open(consts.Y_TRAIN_FULL, 'wb') as f:
+    pickle.dump(y_train, f)
+
+x_test = test
+y_test = np.array(y_test['SalePrice'])
+
+Path(consts.X_TEST).mkdir(parents=True, exist_ok=True)
+with open(consts.X_TEST_FULL, 'wb') as f:
+    pickle.dump(x_test, f)
+
+Path(consts.Y_TEST).mkdir(parents=True, exist_ok=True)
+with open(consts.Y_TEST_FULL, 'wb') as f:
+    pickle.dump(y_test, f)
+
+
+
 
 

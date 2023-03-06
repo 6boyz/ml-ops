@@ -115,8 +115,8 @@ stacked_averaged_models = StackingAveragedModels(base_models = (ENet, GBoost, KR
                                                 meta_model = lasso)
 
 models = [lasso, ENet, KRR, GBoost, model_xgb, model_lgb, averaged_models, stacked_averaged_models]
-results = zip(map(lambda model: rmsle_cv(model), models), models)
-model = reduce(lambda res1, res2: res1[0] if res1[0] > res2[0] else res2, results)[1]()
+results = list(zip(map(lambda model: rmsle_cv(model), models), models))
+model = reduce(lambda res1, res2: res1 if np.average(res1[0]) > np.average(res2[0]) else res2, results)[1]
 model.fit(X, Y)
 
 Path(consts.MODEL).mkdir(parents=True, exist_ok=True)

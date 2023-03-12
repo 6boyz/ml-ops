@@ -21,9 +21,9 @@ def rmsle(y, y_pred):
     return np.sqrt(mean_squared_error(y, y_pred))
     
 def rmsle_cv(model, model_name:str =None):
-    kf = KFold(N_FOLDS, shuffle=True, random_state=42).get_n_splits(x_train.values)
+    kf = KFold(N_FOLDS, shuffle=True, random_state=consts.RANDOM_STATE).get_n_splits(x_train.values)
     rmse = np.sqrt(-cross_val_score(model, x_train.values, y_train, scoring="neg_mean_squared_error", cv = kf))
-    print(f"{model_name if model_name else model} \nRMSE mean: {rmse.mean():.4f} \nRMSE std: {rmse.std():.4f}")
+    print(f"{model_name if model_name else model} \n\tRMSE mean: {rmse.mean():.4f} \n\tRMSE std: {rmse.std():.4f}")
     return(rmse)
 
 print_log('Data read')

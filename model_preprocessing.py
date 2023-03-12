@@ -70,7 +70,7 @@ all_data['MSSubClass'] = all_data['MSSubClass'].fillna("None")
 all_data_na = (all_data.isnull().sum() / len(all_data)) * 100
 all_data_na = all_data_na.drop(all_data_na[all_data_na == 0].index).sort_values(ascending=False)
 missing_data = pd.DataFrame({'Missing Ratio': all_data_na})
-print('\nПроверка: ', missing_data.empty)
+print('Missing data not contains: ', missing_data.empty)
 
 # MSSubClass=The building class
 all_data['MSSubClass'] = all_data['MSSubClass'].apply(str)

@@ -1,10 +1,10 @@
-import pickle
-from pathlib import Path
 import pandas as pd
 import numpy as np
-import consts
 from scipy.stats import norm, skew
 from sklearn.preprocessing import LabelEncoder
+
+import consts
+from utils import save_data
 
 x_train = pd.read_pickle(consts.X_TRAIN_FULL)
 y_train = pd.read_pickle(consts.Y_TRAIN_FULL)
@@ -129,26 +129,11 @@ test = all_data[ntrain:]
 x_train = train
 y_train = y_train
 
-Path(consts.X_TRAIN).mkdir(parents=True, exist_ok=True)
-with open(consts.X_TRAIN_FULL, 'wb') as f:
-    pickle.dump(x_train, f)
-
-Path(consts.Y_TRAIN).mkdir(parents=True, exist_ok=True)
-with open(consts.Y_TRAIN_FULL, 'wb') as f:
-    pickle.dump(y_train, f)
+save_data(x_train, consts.X_TRAIN, consts.X_TRAIN_FULL)
+save_data(y_train, consts.Y_TRAIN, consts.Y_TRAIN_FULL)
 
 x_test = test
 y_test = np.array(y_test['SalePrice'])
 
-Path(consts.X_TEST).mkdir(parents=True, exist_ok=True)
-with open(consts.X_TEST_FULL, 'wb') as f:
-    pickle.dump(x_test, f)
-
-Path(consts.Y_TEST).mkdir(parents=True, exist_ok=True)
-with open(consts.Y_TEST_FULL, 'wb') as f:
-    pickle.dump(y_test, f)
-
-
-
-
-
+save_data(x_test, consts.X_TEST, consts.X_TEST_FULL)
+save_data(y_test, consts.Y_TEST, consts.Y_TEST_FULL)

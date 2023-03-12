@@ -13,7 +13,7 @@ from sklearn.model_selection import KFold, cross_val_score, train_test_split
 from sklearn.metrics import mean_squared_error
 
 import consts
-from utils import print_log
+from utils import print_log, save_data
 
 N_FOLDS = 5
 
@@ -66,7 +66,5 @@ model = reduce(lambda res1, res2: res1 if np.average(res1[0]) > np.average(res2[
 print_log('Fit best model')
 model.fit(X, Y)
 
-print_log('Save best model')
-Path(consts.MODEL).mkdir(parents=True, exist_ok=True)
-with open(consts.MODEL_FULL, 'wb') as f:
-  pickle.dump(model, f)
+print_log("Save model: {model}")
+save_data(model, consts.MODEL, consts.MODEL_FULL)

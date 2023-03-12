@@ -1,5 +1,8 @@
+DATE_BIN=$(command -v date)
+DATE=`${DATE_BIN} +@%H:%M:%S`
+
 print_log () {
-    echo `date +@%H:%M:%S` $*
+    echo $DATE $*
 }
 
 print_log Install virtualenv for Python...

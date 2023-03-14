@@ -61,7 +61,7 @@ models = [lasso, enet, krr, gboost, model_xgb, model_lgb]
 
 print_log('Models testing:')
 results = list(zip(map(lambda model: rmsle_cv(model), models), models))
-model = reduce(lambda res1, res2: res1 if np.average(res1[0]) > np.average(res2[0]) else res2, results)[1]
+model = reduce(lambda res1, res2: res1 if np.average(res1[0]) < np.average(res2[0]) else res2, results)[1]
 
 print_log('Fit best model')
 model.fit(X, Y)

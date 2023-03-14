@@ -5,6 +5,12 @@ print_log () {
     echo $DATE $*
 }
 
+print_log Data download...
+mkdir data_default
+cd data_default
+curl -LJO https://raw.githubusercontent.com/6boyz/ml-ops/master/static-files/house-pricing.csv
+cd -
+
 print_log Install virtualenv for Python...
 python3 -m pip install --user virtualenv
 

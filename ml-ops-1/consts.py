@@ -12,7 +12,7 @@ Y_TEST_FULL = Y_TEST + 'y.pckl'
 X_TEST = '.\\test\\'
 X_TEST_FULL = X_TEST + 'x.pckl'
 
-DATA_PATH = '.\\data_default\\' + 'data.csv'
+DATA_PATH = '.\\data_default\\' + 'house-pricing.csv'
 
 MODEL = '.\\model\\'
 MODEL_FULL = MODEL + 'model.pckl'

@@ -66,5 +66,5 @@ model = reduce(lambda res1, res2: res1 if np.average(res1[0]) > np.average(res2[
 print_log('Fit best model')
 model.fit(X, Y)
 
-print_log("Save model: {model}")
+print_log(f"Save model: {model}")
 save_data(model, consts.MODEL, consts.MODEL_FULL)

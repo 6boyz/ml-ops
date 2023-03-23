@@ -14,6 +14,9 @@ cd -
 print_log Install Python...
 apt install python3
 
+print_log Install pip...
+apt install python3-pip
+
 print_log Install virtualenv for Python...
 python3 -m pip install --user virtualenv
 

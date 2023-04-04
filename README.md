@@ -1,4 +1,4 @@
-# Репозиторий первого задания по MLops 2023 spring
+# Репозиторий MLops 2023 spring
 
 Команда:
 * [Мирвода Артем](https://github.com/Roccowen)

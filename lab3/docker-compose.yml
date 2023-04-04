@@ -1,6 +1,7 @@
 version: "3.9"
 services:
-  web:
-    build: .
+  app:
+    image: answers-to-questions
+    build: ./app
     ports:
       - "8501:8501"

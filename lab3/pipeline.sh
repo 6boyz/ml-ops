@@ -19,3 +19,6 @@ docker compose build
 docker tag $APP_NAME $APP_KEY
 docker image rm $APP_NAME
 docker push $APP_KEY
+docker run -p 8501:8501 $APP_KEY
+
+echo "Application started at localhost:8501..."

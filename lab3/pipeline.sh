@@ -12,7 +12,7 @@ stty echo
 
 APP_NAME="answers-to-questions"
 TAG=$(git rev-parse --short HEAD)
-APP_KEY="$($USERNAME)/$($APP_NAME):$($TAG)"
+APP_KEY="$USERNAME/$APP_NAME:$TAG"
 
 docker login -u $USERNAME -p $PASSWORD 
 docker compose build
@@ -21,4 +21,5 @@ docker image rm $APP_NAME
 docker push $APP_KEY
 docker run -p 8501:8501 $APP_KEY
 
-echo "Application started at localhost:8501..."
+echo "Application available on DockerHub: https://hub.docker.com/repository/docker/$USERNAME/$APP_NAME/"
+echo'Application started at http://localhost:8501...'

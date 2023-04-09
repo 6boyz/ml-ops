@@ -17,4 +17,5 @@ docker image rm $APP_NAME
 docker push $APP_KEY
 docker run -p 8501:8501 $APP_KEY
 
-Write-Output 'Application started at localhost:8501...'
+Write-Output "Application available on DockerHub: https://hub.docker.com/repository/docker/$($USERNAME)/$($APP_NAME)/"
+Write-Output 'Application started at http://localhost:8501...'

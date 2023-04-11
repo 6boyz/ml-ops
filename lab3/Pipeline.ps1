@@ -14,6 +14,8 @@ cd app
 $TAG = git rev-parse --short HEAD
 $APP_KEY = "$($USERNAME)/$($APP_NAME):$($TAG)"
 
+cd ..
+
 docker login -u $USERNAME -p $PASSWORD 
 docker compose build
 docker tag $APP_NAME $APP_KEY

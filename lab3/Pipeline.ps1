@@ -7,6 +7,10 @@ $PASSWORD = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropS
 #$PASSWORD="password"
 
 $APP_NAME = "answers-to-questions"
+
+git clone https://github.com/6boyz/project-practicum.git app
+cd app
+
 $TAG = git rev-parse --short HEAD
 $APP_KEY = "$($USERNAME)/$($APP_NAME):$($TAG)"
 

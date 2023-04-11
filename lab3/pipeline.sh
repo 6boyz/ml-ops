@@ -22,4 +22,4 @@ docker push $APP_KEY
 docker run -p 8501:8501 $APP_KEY
 
 echo "Application available on DockerHub: https://hub.docker.com/repository/docker/$USERNAME/$APP_NAME/"
-echo'Application started at http://localhost:8501...'
+echo "Application started at http://localhost:8501..."

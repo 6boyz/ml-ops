@@ -2,6 +2,6 @@ version: "3.9"
 services:
   app:
     image: answers-to-questions
-    build: https://github.com/6boyz/project-practicum.git
+    build: ./app
     ports:
       - "8501:8501"

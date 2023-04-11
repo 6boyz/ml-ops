@@ -27,4 +27,4 @@ docker run -d -p 8501:8501 $APP_KEY
 
 Write-Output "Application: $APP_KEY"
 Write-Output "On DockerHub: https://hub.docker.com/repository/docker/$($USERNAME)/$($APP_NAME)/"
-Write-Output "Started at http://localhost:8501"
+Write-Output "Started at: http://localhost:8501"
